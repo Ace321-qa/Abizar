@@ -1,0 +1,9 @@
+:root {
+  --admin-bg: #F7F3E8;
+  --admin-accent: #146B4A;
+}
+
+.admin-body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--admin-bg);
+}
