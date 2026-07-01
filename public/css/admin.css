@@ -1,9 +1,137 @@
 :root {
   --admin-bg: #F7F3E8;
   --admin-accent: #146B4A;
+  --admin-forest: #0B3D2E;
+  --admin-gold: #C9A227;
+  --admin-text: #1F2933;
+  --admin-border: rgba(11, 61, 46, 0.15);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .admin-body {
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--admin-bg);
+  color: var(--admin-text);
+  min-height: 100vh;
+}
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--admin-forest);
+  color: #fff;
+  padding: 0.9rem 1.5rem;
+}
+
+.admin-brand {
+  font-weight: 600;
+}
+
+.admin-logout {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.admin-logout:hover {
+  color: var(--admin-gold);
+}
+
+.admin-main {
+  padding: 2rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ---------- Login ---------- */
+
+.admin-auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.admin-auth-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(11, 61, 46, 0.12);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.admin-auth-title {
+  margin: 0 0 0.25rem;
+  color: var(--admin-forest);
+  font-size: 1.4rem;
+}
+
+.admin-auth-subtitle {
+  margin: 0 0 1.5rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.admin-auth-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.admin-auth-form input {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.admin-auth-form button {
+  margin-top: 0.75rem;
+  padding: 0.65rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--admin-forest);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-auth-form button:hover {
+  background: var(--admin-accent);
+}
+
+.admin-error {
+  background: #fdecea;
+  color: #b42318;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin: 0 0 1rem;
+}
+
+/* ---------- Dashboard ---------- */
+
+.admin-dashboard h1 {
+  color: var(--admin-forest);
+}
+
+.admin-note {
+  color: #6b7280;
+  font-style: italic;
 }

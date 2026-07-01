@@ -1,0 +1,14 @@
+<div class="admin-auth-wrap">
+  <div class="admin-auth-card">
+    <h1 class="admin-auth-title"><%= siteName.en %></h1>
+    <p class="admin-auth-subtitle">Admin Login</p>
+    <% if (error) { %>
+      <p class="admin-error"><%= error %></p>
+    <% } %>
+    <form method="POST" action="/admin/login" class="admin-auth-form">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required autofocus>
+      <button type="submit">Log in</button>
+    </form>
+  </div>
+</div>

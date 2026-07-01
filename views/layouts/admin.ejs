@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'Admin' %> | <%= siteName.en %> Admin</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+  <% if (typeof isAdmin !== 'undefined' && isAdmin) { %>
+    <header class="admin-topbar">
+      <span class="admin-brand"><%= siteName.en %> Admin</span>
+      <a href="/admin/logout" class="admin-logout">Logout</a>
+    </header>
+  <% } %>
+  <main class="admin-main">
+    <%- body %>
+  </main>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
