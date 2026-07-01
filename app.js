@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 
 const constants = require('./config/constants');
+const { ensureAdminSeeded } = require('./services/adminSeed');
+
+ensureAdminSeeded();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
