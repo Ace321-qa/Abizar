@@ -1,0 +1,30 @@
+<section class="container listing-page">
+  <h1><%= lang === 'id' ? 'Video' : 'Videos' %></h1>
+
+  <div class="filter-bar">
+    <a href="/videos" class="<%= !activeCategory ? 'active' : '' %>"><%= lang === 'id' ? 'Semua' : 'All' %></a>
+    <% categories.forEach(function (cat) { %>
+      <a href="/videos?category=<%= cat.slug %>" class="<%= activeCategory === cat.slug ? 'active' : '' %>">
+        <%= getLocalized(cat, 'name', lang) %>
+      </a>
+    <% }); %>
+  </div>
+
+  <% if (videos.length) { %>
+    <div class="card-grid">
+      <% videos.forEach(function (video) { %>
+        <div class="card video-card">
+          <div class="video-embed">
+            <iframe src="<%= video.embedUrl %>" title="<%= getLocalized(video, 'title', lang) %>" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="card-body">
+            <h3><%= getLocalized(video, 'title', lang) %></h3>
+            <p class="card-excerpt"><%= getLocalized(video, 'description', lang) %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p class="empty-state"><%= lang === 'id' ? 'Belum ada video.' : 'No videos yet.' %></p>
+  <% } %>
+</section>

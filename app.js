@@ -6,6 +6,16 @@ const expressLayouts = require('express-ejs-layouts');
 
 const constants = require('./config/constants');
 const { ensureAdminSeeded } = require('./services/adminSeed');
+const i18n = require('./middleware/i18n');
+
+const publicRoutes = require('./routes/publicRoutes');
+const contactRoutes = require('./routes/contactRoutes');
+const topicRoutes = require('./routes/topicRoutes');
+const articleRoutes = require('./routes/articleRoutes');
+const ebookRoutes = require('./routes/ebookRoutes');
+const videoRoutes = require('./routes/videoRoutes');
+const audioRoutes = require('./routes/audioRoutes');
+const pageRoutes = require('./routes/pageRoutes');
 
 ensureAdminSeeded();
 
@@ -23,14 +33,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-  res.locals.lang = req.cookies.lang || constants.DEFAULT_LANG;
   res.locals.siteName = { en: constants.SITE_NAME_EN, id: constants.SITE_NAME_ID };
   next();
 });
+app.use(i18n);
 
-app.get('/', (req, res) => {
-  res.render('home', { title: 'Home' });
-});
+app.use('/', publicRoutes);
+app.use('/', contactRoutes);
+app.use('/', topicRoutes);
+app.use('/articles', articleRoutes);
+app.use('/ebooks', ebookRoutes);
+app.use('/videos', videoRoutes);
+app.use('/audios', audioRoutes);
+app.use('/pages', pageRoutes);
 
 app.use((req, res) => {
   res.status(404).send('Page not found');

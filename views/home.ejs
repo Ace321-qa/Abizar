@@ -2,7 +2,70 @@
   <h1><%= siteName[lang] %></h1>
   <p class="tagline">
     <%= lang === 'id'
-      ? 'Perancah platform sedang berjalan. Konten akan segera hadir.'
-      : 'Platform scaffold is running. Content coming soon.' %>
+      ? 'Esai, ebook, video, dan audio seputar antropologi Islam dan kesehatan masyarakat.'
+      : 'Essays, ebooks, videos, and audio on Islamic anthropology and public health.' %>
   </p>
+</section>
+
+<section class="container home-section">
+  <div class="section-header">
+    <h2><%= lang === 'id' ? 'Esai Terbaru' : 'Recent Articles' %></h2>
+    <a href="/articles"><%= lang === 'id' ? 'Lihat semua' : 'View all' %></a>
+  </div>
+  <% if (articles.length) { %>
+    <div class="card-grid">
+      <% articles.forEach(function(article) { %>
+        <%- include('partials/card', {
+          heading: getLocalized(article, 'title', lang),
+          excerpt: getLocalized(article, 'excerpt', lang),
+          image: article.coverImage,
+          url: '/articles/' + article.slug
+        }) %>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p class="empty-state"><%= lang === 'id' ? 'Belum ada esai.' : 'No articles yet.' %></p>
+  <% } %>
+</section>
+
+<section class="container home-section">
+  <div class="section-header">
+    <h2><%= lang === 'id' ? 'Ebook Terbaru' : 'Recent Ebooks' %></h2>
+    <a href="/ebooks"><%= lang === 'id' ? 'Lihat semua' : 'View all' %></a>
+  </div>
+  <% if (ebooks.length) { %>
+    <div class="card-grid">
+      <% ebooks.forEach(function(ebook) { %>
+        <%- include('partials/card', {
+          heading: getLocalized(ebook, 'title', lang),
+          excerpt: getLocalized(ebook, 'description', lang),
+          image: ebook.coverImage,
+          url: '/ebooks/' + ebook.slug
+        }) %>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p class="empty-state"><%= lang === 'id' ? 'Belum ada ebook.' : 'No ebooks yet.' %></p>
+  <% } %>
+</section>
+
+<section class="container home-section">
+  <div class="section-header">
+    <h2><%= lang === 'id' ? 'Video Terbaru' : 'Recent Videos' %></h2>
+    <a href="/videos"><%= lang === 'id' ? 'Lihat semua' : 'View all' %></a>
+  </div>
+  <% if (videos.length) { %>
+    <div class="card-grid">
+      <% videos.forEach(function(video) { %>
+        <%- include('partials/card', {
+          heading: getLocalized(video, 'title', lang),
+          excerpt: getLocalized(video, 'description', lang),
+          image: video.thumbnail,
+          url: '/videos'
+        }) %>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p class="empty-state"><%= lang === 'id' ? 'Belum ada video.' : 'No videos yet.' %></p>
+  <% } %>
 </section>

@@ -1,0 +1,14 @@
+<section class="container listing-page">
+  <h1><%= lang === 'id' ? 'Topik' : 'Topics' %></h1>
+
+  <div class="card-grid">
+    <% categories.forEach(function (cat) { %>
+      <a class="card topic-card" href="/topics/<%= cat.slug %>">
+        <h3><%= getLocalized(cat, 'name', lang) %></h3>
+        <% if (getLocalized(cat, 'description', lang)) { %>
+          <p><%= getLocalized(cat, 'description', lang) %></p>
+        <% } %>
+      </a>
+    <% }); %>
+  </div>
+</section>

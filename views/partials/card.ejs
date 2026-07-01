@@ -1,0 +1,13 @@
+<article class="card content-card">
+  <% if (typeof image !== 'undefined' && image) { %>
+    <a href="<%= url %>" class="card-image-link">
+      <img src="<%= image %>" alt="<%= heading %>" class="card-image">
+    </a>
+  <% } %>
+  <div class="card-body">
+    <h3><a href="<%= url %>"><%= heading %></a></h3>
+    <% if (typeof excerpt !== 'undefined' && excerpt) { %>
+      <p class="card-excerpt"><%= excerpt %></p>
+    <% } %>
+  </div>
+</article>

@@ -1,0 +1,6 @@
+<div class="share-buttons">
+  <span><%= lang === 'id' ? 'Bagikan:' : 'Share:' %></span>
+  <a href="https://wa.me/?text=<%= encodeURIComponent(shareTitle + ' ' + shareUrl) %>" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent(shareUrl) %>" target="_blank" rel="noopener">Facebook</a>
+  <a href="https://twitter.com/intent/tweet?url=<%= encodeURIComponent(shareUrl) %>&text=<%= encodeURIComponent(shareTitle) %>" target="_blank" rel="noopener">X</a>
+</div>

@@ -1,0 +1,15 @@
+<article class="container article-show">
+  <h1><%= getLocalized(article, 'title', lang) %></h1>
+  <% if (getLocalized(article, 'readingTime', lang)) { %>
+    <p class="meta"><%= getLocalized(article, 'readingTime', lang) %></p>
+  <% } %>
+  <% if (article.coverImage) { %>
+    <img src="<%= article.coverImage %>" alt="<%= getLocalized(article, 'title', lang) %>" class="article-cover">
+  <% } %>
+  <div class="prose"><%- getLocalized(article, 'content', lang) %></div>
+
+  <%- include('../partials/shareButtons', {
+    shareTitle: getLocalized(article, 'title', lang),
+    shareUrl: shareUrl
+  }) %>
+</article>

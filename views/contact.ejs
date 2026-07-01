@@ -1,0 +1,18 @@
+<section class="container page-content">
+  <% if (page) { %>
+    <h1><%= getLocalized(page, 'title', lang) %></h1>
+    <div class="prose"><%- getLocalized(page, 'content', lang) %></div>
+  <% } else { %>
+    <h1><%= lang === 'id' ? 'Kontak' : 'Contact' %></h1>
+    <p class="empty-state"><%= lang === 'id' ? 'Konten belum tersedia.' : 'Content not available yet.' %></p>
+  <% } %>
+
+  <% const links = Object.entries(socialLinks || {}).filter(function (pair) { return pair[1]; }); %>
+  <% if (links.length) { %>
+    <ul class="social-links">
+      <% links.forEach(function (pair) { %>
+        <li><a href="<%= pair[1] %>" target="_blank" rel="noopener"><%= pair[0] %></a></li>
+      <% }); %>
+    </ul>
+  <% } %>
+</section>

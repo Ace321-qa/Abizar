@@ -1,0 +1,67 @@
+<section class="container listing-page">
+  <h1><%= getLocalized(category, 'name', lang) %></h1>
+  <% if (getLocalized(category, 'description', lang)) { %>
+    <p class="tagline"><%= getLocalized(category, 'description', lang) %></p>
+  <% } %>
+
+  <% if (articles.length) { %>
+    <h2><%= lang === 'id' ? 'Esai' : 'Articles' %></h2>
+    <div class="card-grid">
+      <% articles.forEach(function (article) { %>
+        <%- include('../partials/card', {
+          heading: getLocalized(article, 'title', lang),
+          excerpt: getLocalized(article, 'excerpt', lang),
+          image: article.coverImage,
+          url: '/articles/' + article.slug
+        }) %>
+      <% }); %>
+    </div>
+  <% } %>
+
+  <% if (ebooks.length) { %>
+    <h2><%= lang === 'id' ? 'Ebook' : 'Ebooks' %></h2>
+    <div class="card-grid">
+      <% ebooks.forEach(function (ebook) { %>
+        <%- include('../partials/card', {
+          heading: getLocalized(ebook, 'title', lang),
+          excerpt: getLocalized(ebook, 'description', lang),
+          image: ebook.coverImage,
+          url: '/ebooks/' + ebook.slug
+        }) %>
+      <% }); %>
+    </div>
+  <% } %>
+
+  <% if (videos.length) { %>
+    <h2><%= lang === 'id' ? 'Video' : 'Videos' %></h2>
+    <div class="card-grid">
+      <% videos.forEach(function (video) { %>
+        <%- include('../partials/card', {
+          heading: getLocalized(video, 'title', lang),
+          excerpt: getLocalized(video, 'description', lang),
+          image: video.thumbnail,
+          url: '/videos'
+        }) %>
+      <% }); %>
+    </div>
+  <% } %>
+
+  <% if (audios.length) { %>
+    <h2><%= lang === 'id' ? 'Audio' : 'Audios' %></h2>
+    <div class="card-grid">
+      <% audios.forEach(function (audio) { %>
+        <%- include('../partials/card', {
+          heading: getLocalized(audio, 'title', lang),
+          excerpt: getLocalized(audio, 'description', lang),
+          url: '/audios'
+        }) %>
+      <% }); %>
+    </div>
+  <% } %>
+
+  <% if (!articles.length && !ebooks.length && !videos.length && !audios.length) { %>
+    <p class="empty-state">
+      <%= lang === 'id' ? 'Belum ada konten di topik ini.' : 'No content in this topic yet.' %>
+    </p>
+  <% } %>
+</section>

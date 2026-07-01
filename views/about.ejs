@@ -1,0 +1,9 @@
+<section class="container page-content">
+  <% if (page) { %>
+    <h1><%= getLocalized(page, 'title', lang) %></h1>
+    <div class="prose"><%- getLocalized(page, 'content', lang) %></div>
+  <% } else { %>
+    <h1><%= lang === 'id' ? 'Tentang' : 'About' %></h1>
+    <p class="empty-state"><%= lang === 'id' ? 'Konten belum tersedia.' : 'Content not available yet.' %></p>
+  <% } %>
+</section>

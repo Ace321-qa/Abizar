@@ -1,0 +1,27 @@
+<section class="container listing-page">
+  <h1><%= lang === 'id' ? 'Esai' : 'Articles' %></h1>
+
+  <div class="filter-bar">
+    <a href="/articles" class="<%= !activeCategory ? 'active' : '' %>"><%= lang === 'id' ? 'Semua' : 'All' %></a>
+    <% categories.forEach(function (cat) { %>
+      <a href="/articles?category=<%= cat.slug %>" class="<%= activeCategory === cat.slug ? 'active' : '' %>">
+        <%= getLocalized(cat, 'name', lang) %>
+      </a>
+    <% }); %>
+  </div>
+
+  <% if (articles.length) { %>
+    <div class="card-grid">
+      <% articles.forEach(function (article) { %>
+        <%- include('../partials/card', {
+          heading: getLocalized(article, 'title', lang),
+          excerpt: getLocalized(article, 'excerpt', lang),
+          image: article.coverImage,
+          url: '/articles/' + article.slug
+        }) %>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p class="empty-state"><%= lang === 'id' ? 'Belum ada esai.' : 'No articles yet.' %></p>
+  <% } %>
+</section>

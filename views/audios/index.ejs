@@ -1,0 +1,28 @@
+<section class="container listing-page">
+  <h1><%= lang === 'id' ? 'Audio' : 'Audios' %></h1>
+
+  <div class="filter-bar">
+    <a href="/audios" class="<%= !activeCategory ? 'active' : '' %>"><%= lang === 'id' ? 'Semua' : 'All' %></a>
+    <% categories.forEach(function (cat) { %>
+      <a href="/audios?category=<%= cat.slug %>" class="<%= activeCategory === cat.slug ? 'active' : '' %>">
+        <%= getLocalized(cat, 'name', lang) %>
+      </a>
+    <% }); %>
+  </div>
+
+  <% if (audios.length) { %>
+    <div class="audio-list">
+      <% audios.forEach(function (audio) { %>
+        <div class="card audio-card">
+          <div class="card-body">
+            <h3><%= getLocalized(audio, 'title', lang) %></h3>
+            <p class="card-excerpt"><%= getLocalized(audio, 'description', lang) %></p>
+            <audio controls src="<%= audio.audioUrl %>"></audio>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <p class="empty-state"><%= lang === 'id' ? 'Belum ada audio.' : 'No audio yet.' %></p>
+  <% } %>
+</section>

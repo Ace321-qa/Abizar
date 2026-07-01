@@ -1,0 +1,12 @@
+<article class="container ebook-show">
+  <% if (ebook.coverImage) { %>
+    <img src="<%= ebook.coverImage %>" alt="<%= getLocalized(ebook, 'title', lang) %>" class="ebook-cover">
+  <% } %>
+  <h1><%= getLocalized(ebook, 'title', lang) %></h1>
+  <div class="prose"><%- getLocalized(ebook, 'description', lang) %></div>
+  <p class="empty-state">
+    <%= lang === 'id'
+      ? 'Unduhan akan tersedia setelah fitur gerbang email diaktifkan.'
+      : 'Download will be available once the email-gate feature is live.' %>
+  </p>
+</article>
