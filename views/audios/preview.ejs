@@ -1,0 +1,17 @@
+<% if (typeof previewMode !== 'undefined' && previewMode) { %>
+  <%- include('../partials/previewBanner', { backTo: backTo }) %>
+<% } %>
+<section class="container listing-page">
+  <div class="audio-list single-preview">
+    <div class="card audio-card">
+      <div class="card-body">
+        <% if (getCategoryName(audio.category, lang)) { %>
+          <span class="card-eyebrow"><%= getCategoryName(audio.category, lang) %></span>
+        <% } %>
+        <h3><%= getLocalized(audio, 'title', lang) %></h3>
+        <p class="card-excerpt"><%= getLocalized(audio, 'description', lang) %></p>
+        <audio controls src="<%= audio.audioUrl %>"></audio>
+      </div>
+    </div>
+  </div>
+</section>

@@ -25,6 +25,7 @@
         </td>
         <td><%= new Date(audio.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
         <td class="admin-row-actions">
+          <a href="/admin/audios/preview/<%= audio.id %>" class="btn btn-secondary" target="_blank">Preview</a>
           <a href="/admin/audios/edit/<%= audio.id %>" class="btn btn-secondary">Edit</a>
           <%- include('../partials/delete-button', { action: '/admin/audios/' + audio.id }) %>
         </td>

@@ -1,6 +1,11 @@
 <div class="admin-page-header">
   <h1><%= title %></h1>
-  <a href="/admin/videos" class="btn btn-secondary">Back to Videos</a>
+  <div class="admin-row-actions">
+    <% if (httpMethod === 'PUT') { %>
+      <a href="/admin/videos/preview/<%= video.id %>" class="btn btn-secondary" target="_blank">Preview</a>
+    <% } %>
+    <a href="/admin/videos" class="btn btn-secondary">Back to Videos</a>
+  </div>
 </div>
 
 <% if (errors && errors.length) { %>

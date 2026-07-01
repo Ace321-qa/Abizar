@@ -126,3 +126,15 @@ exports.adminDelete = (req, res) => {
   jsonStore.remove(FILE, req.params.id);
   res.redirect('/admin/videos');
 };
+
+exports.adminPreview = (req, res) => {
+  const video = jsonStore.getById(FILE, req.params.id);
+  if (!video) return res.status(404).send('Video not found');
+
+  res.render('videos/preview', {
+    title: res.locals.getLocalized(video, 'title', res.locals.lang),
+    video: { ...video, embedUrl: toEmbedUrl(video.youtubeUrl) },
+    previewMode: true,
+    backTo: '/admin/videos',
+  });
+};

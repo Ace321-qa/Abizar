@@ -1,6 +1,11 @@
 <div class="admin-page-header">
   <h1><%= title %></h1>
-  <a href="/admin/audios" class="btn btn-secondary">Back to Audios</a>
+  <div class="admin-row-actions">
+    <% if (httpMethod === 'PUT') { %>
+      <a href="/admin/audios/preview/<%= audio.id %>" class="btn btn-secondary" target="_blank">Preview</a>
+    <% } %>
+    <a href="/admin/audios" class="btn btn-secondary">Back to Audios</a>
+  </div>
 </div>
 
 <% if (errors && errors.length) { %>

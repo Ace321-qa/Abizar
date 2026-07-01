@@ -6,6 +6,7 @@ router.get('/', videoController.adminIndex);
 router.get('/new', videoController.adminNewForm);
 router.post('/', videoController.adminCreate);
 router.get('/edit/:id', videoController.adminEditForm);
+router.get('/preview/:id', videoController.adminPreview);
 router.put('/:id', videoController.adminUpdate);
 router.delete('/:id', videoController.adminDelete);
 

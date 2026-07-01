@@ -118,3 +118,15 @@ exports.adminDelete = (req, res) => {
   jsonStore.remove(FILE, req.params.id);
   res.redirect('/admin/audios');
 };
+
+exports.adminPreview = (req, res) => {
+  const audio = jsonStore.getById(FILE, req.params.id);
+  if (!audio) return res.status(404).send('Audio not found');
+
+  res.render('audios/preview', {
+    title: res.locals.getLocalized(audio, 'title', res.locals.lang),
+    audio,
+    previewMode: true,
+    backTo: '/admin/audios',
+  });
+};

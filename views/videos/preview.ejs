@@ -1,0 +1,19 @@
+<% if (typeof previewMode !== 'undefined' && previewMode) { %>
+  <%- include('../partials/previewBanner', { backTo: backTo }) %>
+<% } %>
+<section class="container listing-page">
+  <div class="card-grid single-preview">
+    <div class="card video-card">
+      <div class="video-embed">
+        <iframe src="<%= video.embedUrl %>" title="<%= getLocalized(video, 'title', lang) %>" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="card-body">
+        <% if (getCategoryName(video.category, lang)) { %>
+          <span class="card-eyebrow"><%= getCategoryName(video.category, lang) %></span>
+        <% } %>
+        <h3><%= getLocalized(video, 'title', lang) %></h3>
+        <p class="card-excerpt"><%= getLocalized(video, 'description', lang) %></p>
+      </div>
+    </div>
+  </div>
+</section>
