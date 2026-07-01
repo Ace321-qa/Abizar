@@ -5,7 +5,7 @@
   <% } %>
 
   <% if (articles.length) { %>
-    <h2><%= lang === 'id' ? 'Esai' : 'Articles' %></h2>
+    <h2><%= lang === 'id' ? 'Esai' : 'Essays' %></h2>
     <div class="card-grid">
       <% articles.forEach(function (article) { %>
         <%- include('../partials/card', {

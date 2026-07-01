@@ -6,6 +6,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
 
+const { ensureDataSeeded } = require('./services/dataSeed');
 const { ensureAdminSeeded } = require('./services/adminSeed');
 const i18n = require('./middleware/i18n');
 const siteMeta = require('./middleware/siteMeta');
@@ -29,6 +30,7 @@ const videoAdminRoutes = require('./routes/admin/videoAdminRoutes');
 const audioAdminRoutes = require('./routes/admin/audioAdminRoutes');
 const categoryAdminRoutes = require('./routes/admin/categoryAdminRoutes');
 
+ensureDataSeeded();
 ensureAdminSeeded();
 
 const app = express();

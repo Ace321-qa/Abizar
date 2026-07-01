@@ -2,7 +2,8 @@ node_modules/
 .env
 *.log
 .DS_Store
-data/admin.json
+data/*.json
+!data/.gitkeep
 public/uploads/pdfs/*
 public/uploads/audio/*
 public/uploads/images/*

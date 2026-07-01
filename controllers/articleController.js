@@ -11,7 +11,7 @@ exports.index = (req, res) => {
   articles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   res.render('articles/index', {
-    title: res.locals.lang === 'id' ? 'Esai' : 'Articles',
+    title: res.locals.lang === 'id' ? 'Esai' : 'Essays',
     articles,
     categories: jsonStore.getAll('categories.json'),
     activeCategory: category || null,
@@ -22,7 +22,7 @@ exports.show = (req, res) => {
   const article = jsonStore
     .getAll(FILE)
     .find((a) => a.slug === req.params.slug && a.published);
-  if (!article) return res.status(404).send('Article not found');
+  if (!article) return res.status(404).send('Essay not found');
 
   res.render('articles/show', {
     title: res.locals.getLocalized(article, 'title', res.locals.lang),
@@ -38,7 +38,7 @@ function validate(body, items, currentId) {
   if (!slug) errors.push('Slug is required.');
   if (!body.title_en || !body.title_en.trim()) errors.push('English title is required.');
   if (slug && items.some((a) => a.slug === slug && a.id !== currentId)) {
-    errors.push('That slug is already in use by another article.');
+    errors.push('That slug is already in use by another essay.');
   }
 
   return errors;
@@ -68,12 +68,12 @@ function fieldsFromBody(body) {
 
 exports.adminIndex = (req, res) => {
   const articles = jsonStore.getAll(FILE).sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-  res.render('admin/articles/list', { title: 'Articles', isAdmin: true, layout: 'layouts/admin', articles });
+  res.render('admin/articles/list', { title: 'Essays', isAdmin: true, layout: 'layouts/admin', articles });
 };
 
 exports.adminNewForm = (req, res) => {
   res.render('admin/articles/form', {
-    title: 'New Article',
+    title: 'New Essay',
     isAdmin: true,
     layout: 'layouts/admin',
     article: {},
@@ -90,7 +90,7 @@ exports.adminCreate = (req, res) => {
 
   if (errors.length) {
     return res.render('admin/articles/form', {
-      title: 'New Article',
+      title: 'New Essay',
       isAdmin: true,
       layout: 'layouts/admin',
       article: req.body,
@@ -107,10 +107,10 @@ exports.adminCreate = (req, res) => {
 
 exports.adminEditForm = (req, res) => {
   const article = jsonStore.getById(FILE, req.params.id);
-  if (!article) return res.status(404).send('Article not found');
+  if (!article) return res.status(404).send('Essay not found');
 
   res.render('admin/articles/form', {
-    title: 'Edit Article',
+    title: 'Edit Essay',
     isAdmin: true,
     layout: 'layouts/admin',
     article,
@@ -123,14 +123,14 @@ exports.adminEditForm = (req, res) => {
 
 exports.adminUpdate = (req, res) => {
   const article = jsonStore.getById(FILE, req.params.id);
-  if (!article) return res.status(404).send('Article not found');
+  if (!article) return res.status(404).send('Essay not found');
 
   const items = jsonStore.getAll(FILE);
   const errors = validate(req.body, items, article.id);
 
   if (errors.length) {
     return res.render('admin/articles/form', {
-      title: 'Edit Article',
+      title: 'Edit Essay',
       isAdmin: true,
       layout: 'layouts/admin',
       article: { ...article, ...req.body },
