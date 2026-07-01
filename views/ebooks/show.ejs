@@ -1,3 +1,6 @@
+<% if (typeof previewMode !== 'undefined' && previewMode) { %>
+  <%- include('../partials/previewBanner', { backTo: backTo }) %>
+<% } %>
 <article class="container ebook-show">
   <% if (ebook.coverImage) { %>
     <img src="<%= ebook.coverImage %>" alt="<%= getLocalized(ebook, 'title', lang) %>" class="ebook-cover">

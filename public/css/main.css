@@ -559,3 +559,19 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
   }
 }
+
+.preview-banner {
+  background: var(--color-gold);
+  color: var(--color-forest);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.6rem 1.25rem;
+}
+
+.preview-banner a {
+  color: var(--color-forest);
+  text-decoration: underline;
+  margin-left: 0.75rem;
+}

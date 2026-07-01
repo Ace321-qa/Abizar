@@ -141,3 +141,15 @@ exports.adminDelete = (req, res) => {
   jsonStore.remove(FILE, req.params.id);
   res.redirect('/admin/ebooks');
 };
+
+exports.adminPreview = (req, res) => {
+  const ebook = jsonStore.getById(FILE, req.params.id);
+  if (!ebook) return res.status(404).send('Ebook not found');
+
+  res.render('ebooks/show', {
+    title: res.locals.getLocalized(ebook, 'title', res.locals.lang),
+    ebook,
+    previewMode: true,
+    backTo: '/admin/ebooks',
+  });
+};

@@ -6,6 +6,7 @@ router.get('/', pageController.adminIndex);
 router.get('/new', pageController.adminNewForm);
 router.post('/', pageController.adminCreate);
 router.get('/edit/:id', pageController.adminEditForm);
+router.get('/preview/:id', pageController.adminPreview);
 router.put('/:id', pageController.adminUpdate);
 router.delete('/:id', pageController.adminDelete);
 

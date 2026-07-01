@@ -25,6 +25,7 @@
         </td>
         <td><%= new Date(article.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
         <td class="admin-row-actions">
+          <a href="/admin/articles/preview/<%= article.id %>" class="btn btn-secondary" target="_blank">Preview</a>
           <a href="/admin/articles/edit/<%= article.id %>" class="btn btn-secondary">Edit</a>
           <%- include('../partials/delete-button', { action: '/admin/articles/' + article.id }) %>
         </td>

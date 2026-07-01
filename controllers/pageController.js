@@ -119,3 +119,15 @@ exports.adminDelete = (req, res) => {
   jsonStore.remove(FILE, req.params.id);
   res.redirect('/admin/pages');
 };
+
+exports.adminPreview = (req, res) => {
+  const page = jsonStore.getById(FILE, req.params.id);
+  if (!page) return res.status(404).send('Page not found');
+
+  res.render('pages/show', {
+    title: res.locals.getLocalized(page, 'title', res.locals.lang),
+    page,
+    previewMode: true,
+    backTo: '/admin/pages',
+  });
+};

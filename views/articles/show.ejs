@@ -1,3 +1,6 @@
+<% if (typeof previewMode !== 'undefined' && previewMode) { %>
+  <%- include('../partials/previewBanner', { backTo: backTo }) %>
+<% } %>
 <article class="container article-show">
   <% if (getCategoryName(article.category, lang)) { %>
     <span class="card-eyebrow"><%= getCategoryName(article.category, lang) %></span>

@@ -32,4 +32,29 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  document.querySelectorAll('[data-image-preview]').forEach(function (input) {
+    var img = document.getElementById(input.getAttribute('data-image-preview'));
+    if (!img) return;
+
+    function update() {
+      if (input.value.trim()) {
+        img.src = input.value.trim();
+        img.style.display = 'block';
+      } else {
+        img.removeAttribute('src');
+        img.style.display = 'none';
+      }
+    }
+
+    img.addEventListener('error', function () {
+      img.style.display = 'none';
+    });
+    img.addEventListener('load', function () {
+      img.style.display = 'block';
+    });
+
+    input.addEventListener('input', update);
+    update();
+  });
 });

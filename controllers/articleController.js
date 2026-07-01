@@ -149,3 +149,16 @@ exports.adminDelete = (req, res) => {
   jsonStore.remove(FILE, req.params.id);
   res.redirect('/admin/articles');
 };
+
+exports.adminPreview = (req, res) => {
+  const article = jsonStore.getById(FILE, req.params.id);
+  if (!article) return res.status(404).send('Essay not found');
+
+  res.render('articles/show', {
+    title: res.locals.getLocalized(article, 'title', res.locals.lang),
+    article,
+    shareUrl: `${process.env.SITE_URL || ''}/articles/${article.slug}`,
+    previewMode: true,
+    backTo: '/admin/articles',
+  });
+};

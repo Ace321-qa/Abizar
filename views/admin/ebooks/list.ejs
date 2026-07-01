@@ -27,6 +27,7 @@
         </td>
         <td><%= new Date(ebook.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
         <td class="admin-row-actions">
+          <a href="/admin/ebooks/preview/<%= ebook.id %>" class="btn btn-secondary" target="_blank">Preview</a>
           <a href="/admin/ebooks/edit/<%= ebook.id %>" class="btn btn-secondary">Edit</a>
           <%- include('../partials/delete-button', { action: '/admin/ebooks/' + ebook.id }) %>
         </td>

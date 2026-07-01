@@ -1,6 +1,11 @@
 <div class="admin-page-header">
   <h1><%= title %></h1>
-  <a href="/admin/articles" class="btn btn-secondary">Back to Essays</a>
+  <div class="admin-row-actions">
+    <% if (httpMethod === 'PUT') { %>
+      <a href="/admin/articles/preview/<%= article.id %>" class="btn btn-secondary" target="_blank">Preview</a>
+    <% } %>
+    <a href="/admin/articles" class="btn btn-secondary">Back to Essays</a>
+  </div>
 </div>
 
 <% if (errors && errors.length) { %>
@@ -35,7 +40,8 @@
   <div class="form-row">
     <div class="form-group">
       <label for="coverImage">Cover Image URL</label>
-      <input type="url" id="coverImage" name="coverImage" value="<%= article.coverImage || '' %>" placeholder="https://...">
+      <input type="url" id="coverImage" name="coverImage" value="<%= article.coverImage || '' %>" placeholder="https://..." data-image-preview="coverImage_preview">
+      <img id="coverImage_preview" class="image-preview" alt="Cover image preview" style="display:none;">
     </div>
     <div class="form-group">
       <label for="tags">Tags (comma-separated)</label>

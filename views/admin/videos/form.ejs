@@ -24,7 +24,8 @@
   <div class="form-row">
     <div class="form-group">
       <label for="thumbnail">Thumbnail URL</label>
-      <input type="url" id="thumbnail" name="thumbnail" value="<%= video.thumbnail || '' %>" placeholder="https://...">
+      <input type="url" id="thumbnail" name="thumbnail" value="<%= video.thumbnail || '' %>" placeholder="https://..." data-image-preview="thumbnail_preview">
+      <img id="thumbnail_preview" class="image-preview" alt="Thumbnail preview" style="display:none;">
     </div>
     <div class="form-group">
       <label for="category">Category</label>
