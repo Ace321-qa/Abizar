@@ -1,0 +1,100 @@
+<div class="admin-page-header">
+  <h1><%= title %></h1>
+  <a href="/admin/articles" class="btn btn-secondary">Back to Articles</a>
+</div>
+
+<% if (errors && errors.length) { %>
+  <div class="admin-error">
+    <ul style="margin:0; padding-left: 1.1rem;">
+      <% errors.forEach(function (err) { %><li><%= err %></li><% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<form class="admin-form" method="POST" action="<%= formAction %>">
+  <% if (httpMethod !== 'POST') { %>
+    <input type="hidden" name="_method" value="<%= httpMethod %>">
+  <% } %>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="slug">Slug</label>
+      <input type="text" id="slug" name="slug" value="<%= article.slug || '' %>" placeholder="my-essay-slug">
+    </div>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" name="category">
+        <option value="">— None —</option>
+        <% categories.forEach(function (cat) { %>
+          <option value="<%= cat.slug %>" <%= article.category === cat.slug ? 'selected' : '' %>><%= cat.name_en %></option>
+        <% }); %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="coverImage">Cover Image URL</label>
+      <input type="url" id="coverImage" name="coverImage" value="<%= article.coverImage || '' %>" placeholder="https://...">
+    </div>
+    <div class="form-group">
+      <label for="tags">Tags (comma-separated)</label>
+      <input type="text" id="tags" name="tags" value="<%= Array.isArray(article.tags) ? article.tags.join(', ') : (article.tags || '') %>" placeholder="ramadan, identity">
+    </div>
+  </div>
+
+  <div class="lang-tabs" data-lang-tabs>
+    <div class="lang-tab-buttons">
+      <button type="button" class="lang-tab-btn active" data-lang-tab-btn="en">English</button>
+      <button type="button" class="lang-tab-btn" data-lang-tab-btn="id">Indonesian</button>
+    </div>
+
+    <div class="lang-tab-panel" data-lang-tab-panel="en">
+      <div class="form-group">
+        <label for="title_en">Title (EN)</label>
+        <input type="text" id="title_en" name="title_en" value="<%= article.title_en || '' %>">
+      </div>
+      <div class="form-group">
+        <label for="excerpt_en">Excerpt (EN)</label>
+        <textarea id="excerpt_en" name="excerpt_en"><%= article.excerpt_en || '' %></textarea>
+      </div>
+      <div class="form-group">
+        <label>Content (EN)</label>
+        <div class="quill-editor" data-quill-for="content_en_input"><%- article.content_en || '' %></div>
+        <input type="hidden" name="content_en" id="content_en_input">
+      </div>
+    </div>
+
+    <div class="lang-tab-panel" data-lang-tab-panel="id" style="display:none;">
+      <div class="form-group">
+        <label for="title_id">Title (ID)</label>
+        <input type="text" id="title_id" name="title_id" value="<%= article.title_id || '' %>">
+      </div>
+      <div class="form-group">
+        <label for="excerpt_id">Excerpt (ID)</label>
+        <textarea id="excerpt_id" name="excerpt_id"><%= article.excerpt_id || '' %></textarea>
+      </div>
+      <div class="form-group">
+        <label>Content (ID)</label>
+        <div class="quill-editor" data-quill-for="content_id_input"><%- article.content_id || '' %></div>
+        <input type="hidden" name="content_id" id="content_id_input">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group form-check">
+      <input type="checkbox" id="published" name="published" <%= article.published ? 'checked' : '' %>>
+      <label for="published">Published</label>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" id="commentsEnabled" name="commentsEnabled" <%= article.commentsEnabled ? 'checked' : '' %>>
+      <label for="commentsEnabled">Comments enabled</label>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/admin/articles" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>

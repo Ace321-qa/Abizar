@@ -1,0 +1,73 @@
+<div class="admin-page-header">
+  <h1><%= title %></h1>
+  <a href="/admin/pages" class="btn btn-secondary">Back to Pages</a>
+</div>
+
+<% if (errors && errors.length) { %>
+  <div class="admin-error">
+    <ul style="margin:0; padding-left: 1.1rem;">
+      <% errors.forEach(function (err) { %><li><%= err %></li><% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<form class="admin-form" method="POST" action="<%= formAction %>">
+  <% if (httpMethod !== 'POST') { %>
+    <input type="hidden" name="_method" value="<%= httpMethod %>">
+  <% } %>
+
+  <div class="form-group">
+    <label for="slug">Slug</label>
+    <input type="text" id="slug" name="slug" value="<%= page.slug || '' %>" placeholder="about">
+    <p class="form-hint">Use "about" or "contact" to power those pages, or any other value for a page at /pages/your-slug.</p>
+  </div>
+
+  <div class="lang-tabs" data-lang-tabs>
+    <div class="lang-tab-buttons">
+      <button type="button" class="lang-tab-btn active" data-lang-tab-btn="en">English</button>
+      <button type="button" class="lang-tab-btn" data-lang-tab-btn="id">Indonesian</button>
+    </div>
+
+    <div class="lang-tab-panel" data-lang-tab-panel="en">
+      <div class="form-group">
+        <label for="title_en">Title (EN)</label>
+        <input type="text" id="title_en" name="title_en" value="<%= page.title_en || '' %>">
+      </div>
+      <div class="form-group">
+        <label>Content (EN)</label>
+        <div class="quill-editor" data-quill-for="content_en_input"><%- page.content_en || '' %></div>
+        <input type="hidden" name="content_en" id="content_en_input">
+      </div>
+      <div class="form-group">
+        <label for="metaDescription_en">Meta Description (EN)</label>
+        <textarea id="metaDescription_en" name="metaDescription_en"><%= page.metaDescription_en || '' %></textarea>
+      </div>
+    </div>
+
+    <div class="lang-tab-panel" data-lang-tab-panel="id" style="display:none;">
+      <div class="form-group">
+        <label for="title_id">Title (ID)</label>
+        <input type="text" id="title_id" name="title_id" value="<%= page.title_id || '' %>">
+      </div>
+      <div class="form-group">
+        <label>Content (ID)</label>
+        <div class="quill-editor" data-quill-for="content_id_input"><%- page.content_id || '' %></div>
+        <input type="hidden" name="content_id" id="content_id_input">
+      </div>
+      <div class="form-group">
+        <label for="metaDescription_id">Meta Description (ID)</label>
+        <textarea id="metaDescription_id" name="metaDescription_id"><%= page.metaDescription_id || '' %></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" id="published" name="published" <%= page.published ? 'checked' : '' %>>
+    <label for="published">Published</label>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/admin/pages" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>

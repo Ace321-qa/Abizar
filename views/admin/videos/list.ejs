@@ -1,0 +1,37 @@
+<div class="admin-page-header">
+  <h1>Videos</h1>
+  <a href="/admin/videos/new" class="btn btn-primary">+ New Video</a>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Status</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% videos.forEach(function (video) { %>
+      <tr>
+        <td><%= video.title_en %></td>
+        <td><%= getCategoryName(video.category, 'en') || '—' %></td>
+        <td>
+          <span class="status-pill <%= video.published ? 'published' : 'draft' %>">
+            <%= video.published ? 'Published' : 'Draft' %>
+          </span>
+        </td>
+        <td><%= new Date(video.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
+        <td class="admin-row-actions">
+          <a href="/admin/videos/edit/<%= video.id %>" class="btn btn-secondary">Edit</a>
+          <%- include('../partials/delete-button', { action: '/admin/videos/' + video.id }) %>
+        </td>
+      </tr>
+    <% }); %>
+    <% if (!videos.length) { %>
+      <tr><td colspan="5">No videos yet.</td></tr>
+    <% } %>
+  </tbody>
+</table>

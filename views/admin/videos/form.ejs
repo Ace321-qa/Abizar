@@ -1,0 +1,83 @@
+<div class="admin-page-header">
+  <h1><%= title %></h1>
+  <a href="/admin/videos" class="btn btn-secondary">Back to Videos</a>
+</div>
+
+<% if (errors && errors.length) { %>
+  <div class="admin-error">
+    <ul style="margin:0; padding-left: 1.1rem;">
+      <% errors.forEach(function (err) { %><li><%= err %></li><% }); %>
+    </ul>
+  </div>
+<% } %>
+
+<form class="admin-form" method="POST" action="<%= formAction %>">
+  <% if (httpMethod !== 'POST') { %>
+    <input type="hidden" name="_method" value="<%= httpMethod %>">
+  <% } %>
+
+  <div class="form-group">
+    <label for="youtubeUrl">YouTube URL</label>
+    <input type="url" id="youtubeUrl" name="youtubeUrl" value="<%= video.youtubeUrl || '' %>" placeholder="https://www.youtube.com/watch?v=...">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="thumbnail">Thumbnail URL</label>
+      <input type="url" id="thumbnail" name="thumbnail" value="<%= video.thumbnail || '' %>" placeholder="https://...">
+    </div>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" name="category">
+        <option value="">— None —</option>
+        <% categories.forEach(function (cat) { %>
+          <option value="<%= cat.slug %>" <%= video.category === cat.slug ? 'selected' : '' %>><%= cat.name_en %></option>
+        <% }); %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tags">Tags (comma-separated)</label>
+    <input type="text" id="tags" name="tags" value="<%= Array.isArray(video.tags) ? video.tags.join(', ') : (video.tags || '') %>">
+  </div>
+
+  <div class="lang-tabs" data-lang-tabs>
+    <div class="lang-tab-buttons">
+      <button type="button" class="lang-tab-btn active" data-lang-tab-btn="en">English</button>
+      <button type="button" class="lang-tab-btn" data-lang-tab-btn="id">Indonesian</button>
+    </div>
+
+    <div class="lang-tab-panel" data-lang-tab-panel="en">
+      <div class="form-group">
+        <label for="title_en">Title (EN)</label>
+        <input type="text" id="title_en" name="title_en" value="<%= video.title_en || '' %>">
+      </div>
+      <div class="form-group">
+        <label for="description_en">Description (EN)</label>
+        <textarea id="description_en" name="description_en"><%= video.description_en || '' %></textarea>
+      </div>
+    </div>
+
+    <div class="lang-tab-panel" data-lang-tab-panel="id" style="display:none;">
+      <div class="form-group">
+        <label for="title_id">Title (ID)</label>
+        <input type="text" id="title_id" name="title_id" value="<%= video.title_id || '' %>">
+      </div>
+      <div class="form-group">
+        <label for="description_id">Description (ID)</label>
+        <textarea id="description_id" name="description_id"><%= video.description_id || '' %></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" id="published" name="published" <%= video.published ? 'checked' : '' %>>
+    <label for="published">Published</label>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/admin/videos" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>

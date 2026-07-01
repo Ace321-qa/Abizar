@@ -1,0 +1,31 @@
+<div class="admin-page-header">
+  <h1>Categories</h1>
+  <a href="/admin/categories/new" class="btn btn-primary">+ New Category</a>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>In Use</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% categories.forEach(function (category) { %>
+      <tr>
+        <td><%= category.name_en %></td>
+        <td><%= category.slug %></td>
+        <td><%= category.usageCount %> item<%= category.usageCount === 1 ? '' : 's' %></td>
+        <td class="admin-row-actions">
+          <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-secondary">Edit</a>
+          <a href="/admin/categories/delete/<%= category.id %>" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+    <% }); %>
+    <% if (!categories.length) { %>
+      <tr><td colspan="4">No categories yet.</td></tr>
+    <% } %>
+  </tbody>
+</table>

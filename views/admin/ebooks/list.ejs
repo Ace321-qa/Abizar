@@ -1,0 +1,39 @@
+<div class="admin-page-header">
+  <h1>Ebooks</h1>
+  <a href="/admin/ebooks/new" class="btn btn-primary">+ New Ebook</a>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Gated</th>
+      <th>Status</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% ebooks.forEach(function (ebook) { %>
+      <tr>
+        <td><%= ebook.title_en %></td>
+        <td><%= getCategoryName(ebook.category, 'en') || '—' %></td>
+        <td><%= ebook.gated ? 'Yes' : 'No' %></td>
+        <td>
+          <span class="status-pill <%= ebook.published ? 'published' : 'draft' %>">
+            <%= ebook.published ? 'Published' : 'Draft' %>
+          </span>
+        </td>
+        <td><%= new Date(ebook.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
+        <td class="admin-row-actions">
+          <a href="/admin/ebooks/edit/<%= ebook.id %>" class="btn btn-secondary">Edit</a>
+          <%- include('../partials/delete-button', { action: '/admin/ebooks/' + ebook.id }) %>
+        </td>
+      </tr>
+    <% }); %>
+    <% if (!ebooks.length) { %>
+      <tr><td colspan="6">No ebooks yet.</td></tr>
+    <% } %>
+  </tbody>
+</table>

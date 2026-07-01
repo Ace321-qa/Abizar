@@ -1,0 +1,37 @@
+<div class="admin-page-header">
+  <h1>Pages</h1>
+  <a href="/admin/pages/new" class="btn btn-primary">+ New Page</a>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Slug</th>
+      <th>Status</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% pages.forEach(function (page) { %>
+      <tr>
+        <td><%= page.title_en %></td>
+        <td>/pages/<%= page.slug %></td>
+        <td>
+          <span class="status-pill <%= page.published ? 'published' : 'draft' %>">
+            <%= page.published ? 'Published' : 'Draft' %>
+          </span>
+        </td>
+        <td><%= new Date(page.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
+        <td class="admin-row-actions">
+          <a href="/admin/pages/edit/<%= page.id %>" class="btn btn-secondary">Edit</a>
+          <%- include('../partials/delete-button', { action: '/admin/pages/' + page.id }) %>
+        </td>
+      </tr>
+    <% }); %>
+    <% if (!pages.length) { %>
+      <tr><td colspan="5">No pages yet.</td></tr>
+    <% } %>
+  </tbody>
+</table>

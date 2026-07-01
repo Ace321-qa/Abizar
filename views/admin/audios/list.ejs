@@ -1,0 +1,37 @@
+<div class="admin-page-header">
+  <h1>Audios</h1>
+  <a href="/admin/audios/new" class="btn btn-primary">+ New Audio</a>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Status</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% audios.forEach(function (audio) { %>
+      <tr>
+        <td><%= audio.title_en %></td>
+        <td><%= getCategoryName(audio.category, 'en') || '—' %></td>
+        <td>
+          <span class="status-pill <%= audio.published ? 'published' : 'draft' %>">
+            <%= audio.published ? 'Published' : 'Draft' %>
+          </span>
+        </td>
+        <td><%= new Date(audio.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
+        <td class="admin-row-actions">
+          <a href="/admin/audios/edit/<%= audio.id %>" class="btn btn-secondary">Edit</a>
+          <%- include('../partials/delete-button', { action: '/admin/audios/' + audio.id }) %>
+        </td>
+      </tr>
+    <% }); %>
+    <% if (!audios.length) { %>
+      <tr><td colspan="5">No audio yet.</td></tr>
+    <% } %>
+  </tbody>
+</table>

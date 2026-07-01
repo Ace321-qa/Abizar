@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= typeof title !== 'undefined' ? title : 'Admin' %> | <%= siteName.en %> Admin</title>
+  <link rel="stylesheet" href="/vendor/quill/quill.snow.css">
   <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body class="admin-body">
@@ -12,10 +13,20 @@
       <span class="admin-brand"><%= siteName.en %> Admin</span>
       <a href="/admin/logout" class="admin-logout">Logout</a>
     </header>
+    <nav class="admin-nav">
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/pages">Pages</a>
+      <a href="/admin/articles">Articles</a>
+      <a href="/admin/ebooks">Ebooks</a>
+      <a href="/admin/videos">Videos</a>
+      <a href="/admin/audios">Audios</a>
+      <a href="/admin/categories">Categories</a>
+    </nav>
   <% } %>
   <main class="admin-main">
     <%- body %>
   </main>
+  <script src="/vendor/quill/quill.js"></script>
   <script src="/js/admin.js"></script>
 </body>
 </html>

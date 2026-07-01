@@ -3,12 +3,14 @@ const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
 
 const { ensureAdminSeeded } = require('./services/adminSeed');
 const i18n = require('./middleware/i18n');
 const siteMeta = require('./middleware/siteMeta');
 const categoryLookup = require('./middleware/categoryLookup');
+const requireAdmin = require('./middleware/requireAdmin');
 
 const publicRoutes = require('./routes/publicRoutes');
 const contactRoutes = require('./routes/contactRoutes');
@@ -20,6 +22,12 @@ const audioRoutes = require('./routes/audioRoutes');
 const pageRoutes = require('./routes/pageRoutes');
 const adminAuthRoutes = require('./routes/admin/authRoutes');
 const adminDashboardRoutes = require('./routes/admin/dashboardRoutes');
+const pageAdminRoutes = require('./routes/admin/pageAdminRoutes');
+const articleAdminRoutes = require('./routes/admin/articleAdminRoutes');
+const ebookAdminRoutes = require('./routes/admin/ebookAdminRoutes');
+const videoAdminRoutes = require('./routes/admin/videoAdminRoutes');
+const audioAdminRoutes = require('./routes/admin/audioAdminRoutes');
+const categoryAdminRoutes = require('./routes/admin/categoryAdminRoutes');
 
 ensureAdminSeeded();
 
@@ -33,6 +41,13 @@ app.use(expressLayouts);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride((req) => {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -53,6 +68,12 @@ app.use(categoryLookup);
 
 app.use('/admin', adminAuthRoutes);
 app.use('/admin', adminDashboardRoutes);
+app.use('/admin/pages', requireAdmin, pageAdminRoutes);
+app.use('/admin/articles', requireAdmin, articleAdminRoutes);
+app.use('/admin/ebooks', requireAdmin, ebookAdminRoutes);
+app.use('/admin/videos', requireAdmin, videoAdminRoutes);
+app.use('/admin/audios', requireAdmin, audioAdminRoutes);
+app.use('/admin/categories', requireAdmin, categoryAdminRoutes);
 
 app.use('/', publicRoutes);
 app.use('/', contactRoutes);

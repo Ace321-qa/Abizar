@@ -1,8 +1,31 @@
 <div class="admin-dashboard">
   <h1>Dashboard</h1>
-  <p>You are logged in as admin.</p>
-  <p class="admin-note">
-    Content management (pages, articles, ebooks, videos, audios, categories) will appear here
-    once the admin CRUD stage is built.
-  </p>
+  <p>Overview of your content.</p>
+
+  <div class="dashboard-grid">
+    <a href="/admin/pages" class="dashboard-card">
+      <span class="dashboard-count"><%= counts.pages %></span>
+      <span class="dashboard-label">Pages</span>
+    </a>
+    <a href="/admin/articles" class="dashboard-card">
+      <span class="dashboard-count"><%= counts.articles %></span>
+      <span class="dashboard-label">Articles</span>
+    </a>
+    <a href="/admin/ebooks" class="dashboard-card">
+      <span class="dashboard-count"><%= counts.ebooks %></span>
+      <span class="dashboard-label">Ebooks</span>
+    </a>
+    <a href="/admin/videos" class="dashboard-card">
+      <span class="dashboard-count"><%= counts.videos %></span>
+      <span class="dashboard-label">Videos</span>
+    </a>
+    <a href="/admin/audios" class="dashboard-card">
+      <span class="dashboard-count"><%= counts.audios %></span>
+      <span class="dashboard-label">Audios</span>
+    </a>
+    <a href="/admin/categories" class="dashboard-card">
+      <span class="dashboard-count"><%= counts.categories %></span>
+      <span class="dashboard-label">Categories</span>
+    </a>
+  </div>
 </div>

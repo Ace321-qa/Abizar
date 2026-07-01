@@ -1,0 +1,41 @@
+<div class="admin-page-header">
+  <h1>Delete "<%= category.name_en %>"</h1>
+  <a href="/admin/categories" class="btn btn-secondary">Back to Categories</a>
+</div>
+
+<div class="admin-form">
+  <% if (usageCount > 0) { %>
+    <p>
+      This category is currently used by <strong><%= usageCount %></strong> item<%= usageCount === 1 ? '' : 's' %>
+      (articles, ebooks, videos, or audio). Choose what should happen to those items before deleting the category.
+    </p>
+
+    <form method="POST" action="/admin/categories/<%= category.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+
+      <div class="form-group">
+        <label for="reassignTo">Reassign those items to</label>
+        <select id="reassignTo" name="reassignTo">
+          <option value="">— Leave uncategorized —</option>
+          <% otherCategories.forEach(function (cat) { %>
+            <option value="<%= cat.slug %>"><%= cat.name_en %></option>
+          <% }); %>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-danger">Delete Category</button>
+        <a href="/admin/categories" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  <% } else { %>
+    <p>This category isn't used by any content. It's safe to delete.</p>
+    <form method="POST" action="/admin/categories/<%= category.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <div class="form-actions">
+        <button type="submit" class="btn btn-danger">Delete Category</button>
+        <a href="/admin/categories" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  <% } %>
+</div>

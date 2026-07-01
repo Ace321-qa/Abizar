@@ -1,0 +1,37 @@
+<div class="admin-page-header">
+  <h1>Articles</h1>
+  <a href="/admin/articles/new" class="btn btn-primary">+ New Article</a>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Status</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% articles.forEach(function (article) { %>
+      <tr>
+        <td><%= article.title_en %></td>
+        <td><%= getCategoryName(article.category, 'en') || '—' %></td>
+        <td>
+          <span class="status-pill <%= article.published ? 'published' : 'draft' %>">
+            <%= article.published ? 'Published' : 'Draft' %>
+          </span>
+        </td>
+        <td><%= new Date(article.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></td>
+        <td class="admin-row-actions">
+          <a href="/admin/articles/edit/<%= article.id %>" class="btn btn-secondary">Edit</a>
+          <%- include('../partials/delete-button', { action: '/admin/articles/' + article.id }) %>
+        </td>
+      </tr>
+    <% }); %>
+    <% if (!articles.length) { %>
+      <tr><td colspan="5">No articles yet.</td></tr>
+    <% } %>
+  </tbody>
+</table>
