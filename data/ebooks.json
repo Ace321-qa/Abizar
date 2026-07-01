@@ -1,1 +1,60 @@
-[]
+[
+  {
+    "id": "demo-e1",
+    "slug": "islam-modern-self-primer",
+    "title_en": "Islam and the Modern Self: A Short Primer",
+    "title_id": "Islam dan Diri Modern: Pengantar Singkat",
+    "description_en": "A short, accessible introduction to thinking about selfhood, faith, and modern life together.",
+    "description_id": "Pengantar singkat dan mudah diakses untuk memikirkan diri, iman, dan kehidupan modern secara bersamaan.",
+    "fileType": "link",
+    "fileUrl": "https://example.com/islam-modern-self.pdf",
+    "coverImage": "https://picsum.photos/seed/modernself/700/900",
+    "category": "islamic-studies",
+    "tags": [
+      "identity"
+    ],
+    "gated": true,
+    "published": true,
+    "createdAt": "2026-06-27T14:04:50.485Z",
+    "updatedAt": "2026-06-27T14:04:50.485Z"
+  },
+  {
+    "id": "demo-e2",
+    "slug": "field-notes-ramadan-diaspora",
+    "title_en": "Field Notes: Ramadan in Diaspora",
+    "title_id": "Catatan Lapangan: Ramadan di Perantauan",
+    "description_en": "Ethnographic notes on how Ramadan is practiced, adapted, and remembered away from home.",
+    "description_id": "Catatan etnografis tentang bagaimana Ramadan dipraktikkan, disesuaikan, dan dikenang jauh dari kampung halaman.",
+    "fileType": "link",
+    "fileUrl": "https://example.com/ramadan-diaspora.pdf",
+    "coverImage": "https://picsum.photos/seed/ramadandiaspora/700/900",
+    "category": "culture-society",
+    "tags": [
+      "ramadan",
+      "diaspora"
+    ],
+    "gated": true,
+    "published": true,
+    "createdAt": "2026-06-19T14:04:50.485Z",
+    "updatedAt": "2026-06-19T14:04:50.485Z"
+  },
+  {
+    "id": "demo-e3",
+    "slug": "civilization-culture-collapse-reading-list",
+    "title_en": "Civilization, Culture, and Collapse: A Reading List",
+    "title_id": "Peradaban, Budaya, dan Keruntuhan: Daftar Bacaan",
+    "description_en": "A curated reading list for anyone thinking seriously about how civilizations rise and fall.",
+    "description_id": "Daftar bacaan pilihan bagi siapa pun yang serius memikirkan bagaimana peradaban bangkit dan runtuh.",
+    "fileType": "link",
+    "fileUrl": "https://example.com/civilization-reading-list.pdf",
+    "coverImage": "https://picsum.photos/seed/civreadinglist/700/900",
+    "category": "history",
+    "tags": [
+      "reading-list"
+    ],
+    "gated": true,
+    "published": true,
+    "createdAt": "2026-06-13T14:04:50.485Z",
+    "updatedAt": "2026-06-13T14:04:50.485Z"
+  }
+]

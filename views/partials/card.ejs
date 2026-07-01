@@ -1,13 +1,21 @@
 <article class="card content-card">
   <% if (typeof image !== 'undefined' && image) { %>
     <a href="<%= url %>" class="card-image-link">
-      <img src="<%= image %>" alt="<%= heading %>" class="card-image">
+      <img src="<%= image %>" alt="<%= heading %>" class="card-image" loading="lazy">
     </a>
   <% } %>
   <div class="card-body">
+    <% if (typeof category !== 'undefined' && category) { %>
+      <span class="card-eyebrow"><%= category %></span>
+    <% } %>
     <h3><a href="<%= url %>"><%= heading %></a></h3>
     <% if (typeof excerpt !== 'undefined' && excerpt) { %>
       <p class="card-excerpt"><%= excerpt %></p>
+    <% } %>
+    <% if (typeof date !== 'undefined' && date) { %>
+      <p class="card-date">
+        <%= new Date(date).toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+      </p>
     <% } %>
   </div>
 </article>

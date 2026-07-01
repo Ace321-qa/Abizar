@@ -4,9 +4,10 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 
-const constants = require('./config/constants');
 const { ensureAdminSeeded } = require('./services/adminSeed');
 const i18n = require('./middleware/i18n');
+const siteMeta = require('./middleware/siteMeta');
+const categoryLookup = require('./middleware/categoryLookup');
 
 const publicRoutes = require('./routes/publicRoutes');
 const contactRoutes = require('./routes/contactRoutes');
@@ -32,11 +33,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-  res.locals.siteName = { en: constants.SITE_NAME_EN, id: constants.SITE_NAME_ID };
-  next();
-});
+app.use(siteMeta);
 app.use(i18n);
+app.use(categoryLookup);
 
 app.use('/', publicRoutes);
 app.use('/', contactRoutes);

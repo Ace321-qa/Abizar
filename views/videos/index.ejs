@@ -18,6 +18,9 @@
             <iframe src="<%= video.embedUrl %>" title="<%= getLocalized(video, 'title', lang) %>" allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="card-body">
+            <% if (getCategoryName(video.category, lang)) { %>
+              <span class="card-eyebrow"><%= getCategoryName(video.category, lang) %></span>
+            <% } %>
             <h3><%= getLocalized(video, 'title', lang) %></h3>
             <p class="card-excerpt"><%= getLocalized(video, 'description', lang) %></p>
           </div>

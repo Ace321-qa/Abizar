@@ -1,19 +1,27 @@
-<header class="site-header">
-  <div class="container nav-inner">
-    <a class="brand" href="/"><%= siteName[lang] %></a>
-    <nav class="main-nav">
-      <a href="/articles"><%= lang === 'id' ? 'Esai' : 'Articles' %></a>
-      <a href="/ebooks"><%= lang === 'id' ? 'Ebook' : 'Ebooks' %></a>
-      <a href="/videos"><%= lang === 'id' ? 'Video' : 'Videos' %></a>
-      <a href="/audios"><%= lang === 'id' ? 'Audio' : 'Audios' %></a>
-      <a href="/topics"><%= lang === 'id' ? 'Topik' : 'Topics' %></a>
-      <a href="/about"><%= lang === 'id' ? 'Tentang' : 'About' %></a>
-      <a href="/contact"><%= lang === 'id' ? 'Kontak' : 'Contact' %></a>
-    </nav>
+<header class="masthead">
+  <div class="container masthead-top">
+    <span class="masthead-kicker"><%- lang === 'id' ? 'Antropologi &middot; Islam &middot; Dunia Modern' : 'Anthropology &middot; Islam &middot; The Modern World' %></span>
     <div class="lang-switch">
       <a href="/lang/en" class="<%= lang === 'en' ? 'active' : '' %>">EN</a>
       <span>/</span>
       <a href="/lang/id" class="<%= lang === 'id' ? 'active' : '' %>">ID</a>
     </div>
   </div>
+
+  <div class="container masthead-brand">
+    <a class="brand" href="/"><%= siteName[lang] %></a>
+    <p class="masthead-tagline"><%= siteTagline[lang] %></p>
+  </div>
+
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <a href="/articles"><%= lang === 'id' ? 'Esai' : 'Essays' %></a>
+      <a href="/ebooks"><%= lang === 'id' ? 'Ebook' : 'Ebooks' %></a>
+      <a href="/videos"><%= lang === 'id' ? 'Video' : 'Videos' %></a>
+      <a href="/audios"><%= lang === 'id' ? 'Audio' : 'Audio' %></a>
+      <a href="/topics"><%= lang === 'id' ? 'Topik' : 'Topics' %></a>
+      <a href="/about"><%= lang === 'id' ? 'Tentang' : 'About' %></a>
+      <a href="/contact"><%= lang === 'id' ? 'Kontak' : 'Contact' %></a>
+    </div>
+  </nav>
 </header>

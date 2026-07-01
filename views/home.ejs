@@ -1,15 +1,31 @@
-<section class="hero container">
-  <h1><%= siteName[lang] %></h1>
-  <p class="tagline">
-    <%= lang === 'id'
-      ? 'Esai, ebook, video, dan audio seputar antropologi Islam dan kesehatan masyarakat.'
-      : 'Essays, ebooks, videos, and audio on Islamic anthropology and public health.' %>
-  </p>
+<% const featured = articles[0]; %>
+
+<section class="hero-banner" style="background-image: url('https://picsum.photos/seed/abizar-masthead/1600/700');">
+  <div class="hero-banner-content">
+    <h1><%= siteName[lang] %></h1>
+    <p class="tagline"><%= siteTagline[lang] %></p>
+  </div>
 </section>
+
+<% if (featured) { %>
+  <section class="container featured-essay">
+    <div class="featured-grid">
+      <a href="/articles/<%= featured.slug %>" class="featured-image">
+        <img src="<%= featured.coverImage %>" alt="<%= getLocalized(featured, 'title', lang) %>" loading="lazy">
+      </a>
+      <div class="featured-content">
+        <span class="card-eyebrow"><%= lang === 'id' ? 'Esai Unggulan' : 'Featured Essay' %></span>
+        <h2><a href="/articles/<%= featured.slug %>"><%= getLocalized(featured, 'title', lang) %></a></h2>
+        <p class="featured-excerpt"><%= getLocalized(featured, 'excerpt', lang) %></p>
+        <a class="btn-read" href="/articles/<%= featured.slug %>"><%= lang === 'id' ? 'Baca esai →' : 'Read essay →' %></a>
+      </div>
+    </div>
+  </section>
+<% } %>
 
 <section class="container home-section">
   <div class="section-header">
-    <h2><%= lang === 'id' ? 'Esai Terbaru' : 'Recent Articles' %></h2>
+    <h2><%= lang === 'id' ? 'Esai Terbaru' : 'Recent Essays' %></h2>
     <a href="/articles"><%= lang === 'id' ? 'Lihat semua' : 'View all' %></a>
   </div>
   <% if (articles.length) { %>
@@ -19,7 +35,9 @@
           heading: getLocalized(article, 'title', lang),
           excerpt: getLocalized(article, 'excerpt', lang),
           image: article.coverImage,
-          url: '/articles/' + article.slug
+          url: '/articles/' + article.slug,
+          category: getCategoryName(article.category, lang),
+          date: article.createdAt
         }) %>
       <% }); %>
     </div>
@@ -40,7 +58,8 @@
           heading: getLocalized(ebook, 'title', lang),
           excerpt: getLocalized(ebook, 'description', lang),
           image: ebook.coverImage,
-          url: '/ebooks/' + ebook.slug
+          url: '/ebooks/' + ebook.slug,
+          category: getCategoryName(ebook.category, lang)
         }) %>
       <% }); %>
     </div>
@@ -61,7 +80,8 @@
           heading: getLocalized(video, 'title', lang),
           excerpt: getLocalized(video, 'description', lang),
           image: video.thumbnail,
-          url: '/videos'
+          url: '/videos',
+          category: getCategoryName(video.category, lang)
         }) %>
       <% }); %>
     </div>

@@ -1,1 +1,112 @@
-[]
+[
+  {
+    "id": "demo-a1",
+    "slug": "ibn-khaldun-social-collapse",
+    "title_en": "What Ibn Khaldun Can Teach Us About Social Collapse",
+    "title_id": "Apa yang Diajarkan Ibn Khaldun tentang Keruntuhan Sosial",
+    "excerpt_en": "On asabiyyah, cycles of civilization, and why the 14th-century sociologist still explains our present moment.",
+    "excerpt_id": "Tentang asabiyah, siklus peradaban, dan mengapa sosiolog abad ke-14 ini masih relevan menjelaskan masa kini.",
+    "content_en": "<p>Ibn Khaldun's Muqaddimah remains one of the earliest attempts at a science of society...</p>",
+    "content_id": "<p>Muqaddimah karya Ibn Khaldun tetap menjadi salah satu upaya paling awal membangun ilmu tentang masyarakat...</p>",
+    "coverImage": "https://picsum.photos/seed/khaldun/900/600",
+    "category": "history",
+    "tags": [
+      "ibn-khaldun",
+      "sociology"
+    ],
+    "published": true,
+    "commentsEnabled": true,
+    "createdAt": "2026-06-29T14:04:50.471Z",
+    "updatedAt": "2026-06-29T14:04:50.485Z",
+    "readingTime_en": "6 min read",
+    "readingTime_id": "6 menit baca"
+  },
+  {
+    "id": "demo-a2",
+    "slug": "friday-prayers-secular-city",
+    "title_en": "The Anthropology of Friday Prayers in a Secular City",
+    "title_id": "Antropologi Salat Jumat di Kota Sekuler",
+    "excerpt_en": "What happens when a weekly ritual has to negotiate space with office hours, traffic, and modern indifference.",
+    "excerpt_id": "Apa yang terjadi ketika ritual mingguan harus bernegosiasi dengan jam kantor, lalu lintas, dan sikap acuh dunia modern.",
+    "content_en": "<p>Every Friday, a quiet negotiation takes place between sacred time and secular schedules...</p>",
+    "content_id": "<p>Setiap hari Jumat, terjadi negosiasi diam-diam antara waktu sakral dan jadwal sekuler...</p>",
+    "coverImage": "https://picsum.photos/seed/fridayprayer/900/600",
+    "category": "islamic-anthropology",
+    "tags": [
+      "ritual",
+      "urban-life"
+    ],
+    "published": true,
+    "commentsEnabled": true,
+    "createdAt": "2026-06-25T14:04:50.485Z",
+    "updatedAt": "2026-06-25T14:04:50.485Z",
+    "readingTime_en": "5 min read",
+    "readingTime_id": "5 menit baca"
+  },
+  {
+    "id": "demo-a3",
+    "slug": "muslim-modern-identity-notes",
+    "title_en": "On Being Muslim and Modern: Notes on Identity",
+    "title_id": "Tentang Menjadi Muslim dan Modern: Catatan tentang Identitas",
+    "excerpt_en": "A personal reflection on holding tradition and modernity together without pretending the tension isn't there.",
+    "excerpt_id": "Refleksi pribadi tentang memegang tradisi dan modernitas bersamaan tanpa berpura-pura ketegangan itu tidak ada.",
+    "content_en": "<p>There is no single, settled way to be Muslim in the modern world...</p>",
+    "content_id": "<p>Tidak ada satu cara baku untuk menjadi Muslim di dunia modern...</p>",
+    "coverImage": "https://picsum.photos/seed/identitynotes/900/600",
+    "category": "reflections",
+    "tags": [
+      "identity",
+      "modernity"
+    ],
+    "published": true,
+    "commentsEnabled": true,
+    "createdAt": "2026-06-21T14:04:50.485Z",
+    "updatedAt": "2026-06-21T14:04:50.485Z",
+    "readingTime_en": "4 min read",
+    "readingTime_id": "4 menit baca"
+  },
+  {
+    "id": "demo-a4",
+    "slug": "public-health-prophetic-tradition",
+    "title_en": "Public Health Lessons from the Prophetic Tradition",
+    "title_id": "Pelajaran Kesehatan Masyarakat dari Tradisi Kenabian",
+    "excerpt_en": "Quarantine, cleanliness, and community care — reading hadith through a public health lens.",
+    "excerpt_id": "Karantina, kebersihan, dan kepedulian komunitas — membaca hadis melalui lensa kesehatan masyarakat.",
+    "content_en": "<p>Centuries before germ theory, prophetic guidance already encoded practices we now recognize as public health...</p>",
+    "content_id": "<p>Berabad-abad sebelum teori kuman ditemukan, tuntunan kenabian sudah memuat praktik yang kini kita kenal sebagai kesehatan masyarakat...</p>",
+    "coverImage": "https://picsum.photos/seed/prophetichealth/900/600",
+    "category": "public-health",
+    "tags": [
+      "hadith",
+      "public-health"
+    ],
+    "published": true,
+    "commentsEnabled": true,
+    "createdAt": "2026-06-17T14:04:50.485Z",
+    "updatedAt": "2026-06-17T14:04:50.485Z",
+    "readingTime_en": "7 min read",
+    "readingTime_id": "7 menit baca"
+  },
+  {
+    "id": "demo-a5",
+    "slug": "sufism-quiet-rebellion",
+    "title_en": "Sufism as a Quiet Rebellion Against Modern Speed",
+    "title_id": "Tasawuf sebagai Pemberontakan Sunyi Melawan Kecepatan Modern",
+    "excerpt_en": "What the inward path offers a culture addicted to notifications and productivity.",
+    "excerpt_id": "Apa yang ditawarkan jalan batin bagi budaya yang kecanduan notifikasi dan produktivitas.",
+    "content_en": "<p>Sufi practice was never about withdrawal from the world, but about a different relationship to time...</p>",
+    "content_id": "<p>Praktik sufi tidak pernah tentang menarik diri dari dunia, melainkan tentang relasi yang berbeda dengan waktu...</p>",
+    "coverImage": "https://picsum.photos/seed/sufismslow/900/600",
+    "category": "sufism",
+    "tags": [
+      "sufism",
+      "modernity"
+    ],
+    "published": true,
+    "commentsEnabled": true,
+    "createdAt": "2026-06-11T14:04:50.485Z",
+    "updatedAt": "2026-06-11T14:04:50.485Z",
+    "readingTime_en": "5 min read",
+    "readingTime_id": "5 menit baca"
+  }
+]

@@ -17,7 +17,8 @@
           heading: getLocalized(ebook, 'title', lang),
           excerpt: getLocalized(ebook, 'description', lang),
           image: ebook.coverImage,
-          url: '/ebooks/' + ebook.slug
+          url: '/ebooks/' + ebook.slug,
+          category: getCategoryName(ebook.category, lang)
         }) %>
       <% }); %>
     </div>

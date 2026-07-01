@@ -1,5 +1,5 @@
 <section class="container listing-page">
-  <h1><%= lang === 'id' ? 'Esai' : 'Articles' %></h1>
+  <h1><%= lang === 'id' ? 'Esai' : 'Essays' %></h1>
 
   <div class="filter-bar">
     <a href="/articles" class="<%= !activeCategory ? 'active' : '' %>"><%= lang === 'id' ? 'Semua' : 'All' %></a>
@@ -17,7 +17,9 @@
           heading: getLocalized(article, 'title', lang),
           excerpt: getLocalized(article, 'excerpt', lang),
           image: article.coverImage,
-          url: '/articles/' + article.slug
+          url: '/articles/' + article.slug,
+          category: getCategoryName(article.category, lang),
+          date: article.createdAt
         }) %>
       <% }); %>
     </div>

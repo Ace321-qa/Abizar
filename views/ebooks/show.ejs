@@ -2,6 +2,9 @@
   <% if (ebook.coverImage) { %>
     <img src="<%= ebook.coverImage %>" alt="<%= getLocalized(ebook, 'title', lang) %>" class="ebook-cover">
   <% } %>
+  <% if (getCategoryName(ebook.category, lang)) { %>
+    <span class="card-eyebrow"><%= getCategoryName(ebook.category, lang) %></span>
+  <% } %>
   <h1><%= getLocalized(ebook, 'title', lang) %></h1>
   <div class="prose"><%- getLocalized(ebook, 'description', lang) %></div>
   <p class="empty-state">

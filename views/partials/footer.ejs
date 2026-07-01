@@ -1,5 +1,26 @@
 <footer class="site-footer">
-  <div class="container footer-inner">
+  <div class="container footer-grid">
+    <div class="footer-col footer-about">
+      <h4 class="footer-brand"><%= siteName[lang] %></h4>
+      <p class="footer-blurb"><%= siteTagline[lang] %></p>
+    </div>
+    <div class="footer-col">
+      <h4><%= lang === 'id' ? 'Jelajahi' : 'Explore' %></h4>
+      <ul class="footer-links">
+        <li><a href="/articles"><%= lang === 'id' ? 'Esai' : 'Essays' %></a></li>
+        <li><a href="/ebooks"><%= lang === 'id' ? 'Ebook' : 'Ebooks' %></a></li>
+        <li><a href="/topics"><%= lang === 'id' ? 'Topik' : 'Topics' %></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4><%= lang === 'id' ? 'Terhubung' : 'Connect' %></h4>
+      <ul class="footer-links">
+        <li><a href="/about"><%= lang === 'id' ? 'Tentang' : 'About' %></a></li>
+        <li><a href="/contact"><%= lang === 'id' ? 'Kontak' : 'Contact' %></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
     <p>&copy; <%= new Date().getFullYear() %> <%= siteName[lang] %>. <%= lang === 'id' ? 'Semua hak dilindungi.' : 'All rights reserved.' %></p>
   </div>
 </footer>

@@ -12,7 +12,8 @@
           heading: getLocalized(article, 'title', lang),
           excerpt: getLocalized(article, 'excerpt', lang),
           image: article.coverImage,
-          url: '/articles/' + article.slug
+          url: '/articles/' + article.slug,
+          date: article.createdAt
         }) %>
       <% }); %>
     </div>
